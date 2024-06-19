@@ -1,0 +1,44 @@
+name: "Deploy Website"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "20"
+
+            - name: Install Babel
+              run: npm install @babel/plugin-proposal-private-property-in-object
+
+            - name: Install React
+              run: npm install react react-router-dom@6 react-scripts typescript web-vitals
+
+            - name: Install Axios
+              run: npm install axios
+
+            - name: Install Tests
+              run: npm install @testing-library/jest-dom @testing-library/react @testing-library/user-event @types/jest @types/node @types/react @types/react-dom
+
+            - name: Install Font Awesome
+              run: npm install @fortawesome/fontawesome-svg-core @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
+
+            - name: Build
+              run: npm run build
+
+            - name: Deploy
+              run: |
+                git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+                npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                GITHUB_REPOSITORY: ${{ 'personalWeb' }}

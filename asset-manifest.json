@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/personalWeb/static/css/main.f855e6bc.css",
+    "main.js": "/personalWeb/static/js/main.b3eb1635.js",
+    "static/js/453.2684e94b.chunk.js": "/personalWeb/static/js/453.2684e94b.chunk.js",
+    "static/media/bing.jpg": "/personalWeb/static/media/bing.0d0bad0273445b3e7950.jpg",
+    "static/media/lin.jpg": "/personalWeb/static/media/lin.03aeed1f655554b83738.jpg",
+    "static/media/astr_space_2.jpg": "/personalWeb/static/media/astr_space_2.780f931674d43dbd299c.jpg",
+    "static/media/astr_space_1.jpg": "/personalWeb/static/media/astr_space_1.53ec80153f686be8b307.jpg",
+    "static/media/google.jpg": "/personalWeb/static/media/google.a66774b11bfe973fe45f.jpg",
+    "static/media/trello.jpg": "/personalWeb/static/media/trello.ffbeea8a8d593ec568a0.jpg",
+    "static/media/stack.jpg": "/personalWeb/static/media/stack.749a9928307c77d49b15.jpg",
+    "static/media/gtri.jpg": "/personalWeb/static/media/gtri.1631fbf2c66b4a5f012f.jpg",
+    "static/media/git.jpg": "/personalWeb/static/media/git.5c3561a15e2dfa8a1dd7.jpg",
+    "static/media/ritp.jpg": "/personalWeb/static/media/ritp.a39b4e4f182a0fb73cd2.jpg",
+    "static/media/astr_moon.jpg": "/personalWeb/static/media/astr_moon.4932a690ca8c05d7b802.jpg",
+    "index.html": "/personalWeb/index.html",
+    "main.f855e6bc.css.map": "/personalWeb/static/css/main.f855e6bc.css.map",
+    "main.b3eb1635.js.map": "/personalWeb/static/js/main.b3eb1635.js.map",
+    "453.2684e94b.chunk.js.map": "/personalWeb/static/js/453.2684e94b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.b3eb1635.js"
+  ]
+}

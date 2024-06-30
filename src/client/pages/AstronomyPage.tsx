@@ -12,8 +12,6 @@ const appStyling : React.CSSProperties = {
 
 const imageContainerStyle : React.CSSProperties = {
     paddingTop: '10px',
-    paddingLeft: '10%',
-    paddingRight: '10%',
     display: 'grid',
     justifyContent: 'center'
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import PersonalWebNavBar from './client/components/NavBar';
 import HomePage from './client/pages/HomePage';
@@ -22,7 +22,8 @@ const pageStyling : React.CSSProperties = {
 
 const appStyling : React.CSSProperties = {
   backgroundColor: PAGE_COLOR,
-  display: 'block',
+  display: 'flex',
+  flexDirection: 'column',
   marginBottom: '-20px'
 }
 
@@ -35,7 +36,7 @@ const smallPaddingBarStyle : React.CSSProperties = {
 function PersonalWebApp() {
   return (
     <div style={appStyling} className="PersonalWebApp">
-      <BrowserRouter basename='/personalWeb/'>
+      <HashRouter basename='/'>
         <PersonalWebNavBar tabs={PAGE_ROUTES}/>
         <div style={pageStyling}>
           <Routes>
@@ -54,7 +55,7 @@ function PersonalWebApp() {
             https://github.com/mnn7135/personal-web/
           </a>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

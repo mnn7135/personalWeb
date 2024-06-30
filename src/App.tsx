@@ -24,7 +24,10 @@ const appStyling : React.CSSProperties = {
   backgroundColor: PAGE_COLOR,
   display: 'flex',
   flexDirection: 'column',
-  marginBottom: '-20px'
+  marginBottom: '-20px',
+  WebkitAppearance: 'none',
+  MozAppearance: 'none',
+  appearance: 'none'
 }
 
 const smallPaddingBarStyle : React.CSSProperties = {
@@ -51,8 +54,8 @@ function PersonalWebApp() {
         <div style={pageStyling}>
           Programmed by Michael Nersinger |
           &nbsp;
-          <a style={{ color: 'white' }} href='https://github.com/mnn7135/personal-web/'>
-            https://github.com/mnn7135/personal-web/
+          <a style={{ color: 'white' }} href='https://github.com/mnn7135/personalWeb/' target='_blank' rel='noreferrer'>
+            https://github.com/mnn7135/personalWeb/
           </a>
         </div>
       </HashRouter>

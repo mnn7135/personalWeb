@@ -126,12 +126,12 @@ function WeatherPage(props: {
                             dataTitles={
                                 ['Sunrise', 'Sunset', 'Wind', 'Pressure', 'Wind Gusts', 'UV Index', 'Humidity', 'Hourly Rainfall', 'Dew Point']
                             }/> : ''}
-                        <div style={{ fontSize: '12px', paddingTop: '10px' }}>{`* One standard atmosphere of pressure equals 1013.25 millibars at sea level.`}</div>
-                        <div style={{ fontSize: '12px', paddingBottom: '10px' }}>{`* Sunrise and sunset data provided by https://sunrise-sunset.org/api.`}</div>
+                        <div style={{ fontSize: '12px', paddingTop: '10px' }}>{`* Sunrise and sunset data provided by https://sunrise-sunset.org/api.`}</div>
+                        <div style={{ fontSize: '12px', paddingBottom: '10px' }}>{`* One standard atmosphere of pressure equals 1013.25 millibars at sea level.`}</div>
                         <div style={paddingBarStyle}></div>
                         <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>Live Data</div>
                         <div style={paddingBarStyle}></div>
-                        <div>
+                        <div style={{ textAlign: 'center', color: 'white', padding: '10px'  }}>
                             {'WIP'}
                         </div>
                         <div style={paddingBarStyle}></div>

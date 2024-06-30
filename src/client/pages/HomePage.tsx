@@ -98,7 +98,7 @@ function HomePage(props: {
             <div style={{ flex: '4' }}>
                 <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}> Feed </div>
                 <div style={paddingBarStyle}></div>
-                <InfoCard title="Welcome!"  center={true} description="Test message."/>
+                <InfoCard title="Welcome!"  center={true} description={`Test message.`}/>
             </div>
         </div>
     );

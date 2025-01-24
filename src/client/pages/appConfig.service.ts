@@ -1,7 +1,7 @@
 import appConfig from '../pages/appConfig.json';
 
 export interface IAppConfig {
-    // Aout Page
+    // About Page
     ABOUT_TITLE: string,
     DETAILS_SECTION: string,
     NAME: string,

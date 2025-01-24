@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IAppConfig, loadAppConfig } from './appConfig.service';
 import InfoCard from "../components/InfoCard";
+import { appStyling, imageContainerStyle, paddingBarStyle } from './pageStyle';
 
 const config: IAppConfig = loadAppConfig();
 
@@ -13,28 +14,6 @@ const stackoveflowImage = require(config.STACK_OVERFLOW_IMG_SRC + "");
 const googleImage = require(config.GOOGLE_IMG_SRC + "");
 const ritImage = require(config.RIT_IMG_SRC + "");
 const trelloImage = require(config.TRELLO_IMG_SRC + "");
-
-const PAGE_COLOR = '#191919';
-
-const paddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'white', 
-    height: '3px', 
-    paddingLeft: '5px', 
-    paddingRight: '5px'
-}
-
-const imageContainerStyle : React.CSSProperties = {
-    paddingTop: '10px',
-    paddingLeft: '10%',
-    paddingRight: '10%',
-    display: 'flex',
-    flex: 'row wrap',
-    justifyContent: 'space-between'
-}
-
-const appStyling : React.CSSProperties = {
-    backgroundColor: PAGE_COLOR
-}
 
 function HomePage(props: {}) {
     const [imageSize, setImageSize] = useState<number>(200*window.innerWidth/1920);

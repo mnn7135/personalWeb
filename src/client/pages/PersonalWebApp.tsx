@@ -5,39 +5,13 @@ import AboutPage from './AboutPage';
 import AstronomyPage from './AstronomyPage';
 import HomePage from './HomePage';
 import WeatherPage from './WeatherPage';
+import { pageStyling, smallPaddingBarStyle, webAppStyling } from './pageStyle';
 
 const config: IAppConfig = loadAppConfig();
 
-const PAGE_COLOR = '#191919';
-
-const pageStyling : React.CSSProperties = {
-  margin: '10px',
-  fontFamily: 'Calibri',
-  fontWeight: 'bold',
-  fontSize: '16px',
-  color: 'white',
-  paddingBottom: '20px'
-}
-
-const appStyling : React.CSSProperties = {
-  backgroundColor: PAGE_COLOR,
-  display: 'flex',
-  flexDirection: 'column',
-  marginBottom: '-20px',
-  WebkitAppearance: 'none',
-  MozAppearance: 'none',
-  appearance: 'none'
-}
-
-const smallPaddingBarStyle : React.CSSProperties = {
-  backgroundColor: 'white', 
-  height: '2px',
-  marginBottom: '19px'
-}
-
 function PersonalWebApp(props: {}) {
     return (
-        <div style={appStyling} className="PersonalWebApp">
+        <div style={webAppStyling} className="PersonalWebApp">
       <HashRouter basename='/'>
         <PersonalWebNavBar 
           tabs={[config.HOME_PAGE_ROUTE,

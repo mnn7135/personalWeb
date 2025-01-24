@@ -1,21 +1,9 @@
 import InfoCard from '../components/InfoCard';
 import InfoListCard from '../components/InfoListCard';
 import { IAppConfig, loadAppConfig } from './appConfig.service';
+import { appStyling, paddingBarStyle } from './pageStyle';
 
 const config: IAppConfig = loadAppConfig();
-
-const PAGE_COLOR = '#191919';
-
-const appStyling : React.CSSProperties = {
-    backgroundColor: PAGE_COLOR
-}
-
-const paddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'white', 
-    height: '3px', 
-    paddingLeft: '5px', 
-    paddingRight: '5px'
-}
 
 function AboutPage(props: {}) {
     return (

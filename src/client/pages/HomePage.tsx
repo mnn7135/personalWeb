@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
+import { IAppConfig, loadAppConfig } from './appConfig.service';
 import InfoCard from "../components/InfoCard";
 
-const bingImage = require('./images/bing.jpg');
-const firstImage = require('./images/first.jpg');
-const gitImage = require('./images/git.jpg');
+const config: IAppConfig = loadAppConfig();
 
-const linkedinImage = require('./images/lin.jpg');
-const gtriImage = require('./images/gtri.jpg');
-const stackoveflowImage = require('./images/stack.jpg');
-
-const googleImage = require('./images/google.jpg');
-const ritImage = require('./images/ritp.jpg');
-const trelloImage = require('./images/trello.jpg');
+const bingImage = require(config.BING_IMG_SRC + "");
+const firstImage = require(config.FIRST_IMG_SRC + "");
+const gitImage = require(config.GIT_IMG_SRC + "");
+const linkedinImage = require(config.LINKEDIN_IMG_SRC + "");
+const gtriImage = require(config.GTRI_IMAGE_STC + "");
+const stackoveflowImage = require(config.STACK_OVERFLOW_IMG_SRC + "");
+const googleImage = require(config.GOOGLE_IMG_SRC + "");
+const ritImage = require(config.RIT_IMG_SRC + "");
+const trelloImage = require(config.TRELLO_IMG_SRC + "");
 
 const PAGE_COLOR = '#191919';
 
@@ -35,9 +36,7 @@ const appStyling : React.CSSProperties = {
     backgroundColor: PAGE_COLOR
 }
 
-function HomePage(props: {
-
-}) {
+function HomePage(props: {}) {
     const [imageSize, setImageSize] = useState<number>(200*window.innerWidth/1920);
 
     useEffect(() => {
@@ -55,50 +54,53 @@ function HomePage(props: {
     }
 
     return (
-
         <div style={{ display: 'flex', ...appStyling }}>
             <div style={{ flex: '7' }}>
-                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}> Quick Links </div>
+                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}> 
+                    {config.QUCIK_LINKS_SECTION}
+                </div>
                 <div style={paddingBarStyle}></div>
                 <div style={imageContainerStyle}>
-                    <a href='https://stackoverflow.com' target='_blank' rel='noreferrer'>
-                        <img alt='Stack Overflow' style={imageStyle} src={stackoveflowImage}/>
+                    <a href={config.STACK_OVERFLOW_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.STACK_OVERFLOW_ALT} style={imageStyle} src={stackoveflowImage}/>
                     </a>
-                    <a href='https://github.com' target='_blank' rel='noreferrer'>
-                        <img alt='Github' style={imageStyle} src={gitImage}/>
+                    <a href={config.GIT_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.GIT_ALT} style={imageStyle} src={gitImage}/>
                     </a>
-                    <a href='https://trello.com' target='_blank' rel='noreferrer'>
-                        <img alt='Trello' style={imageStyle} src={trelloImage}/>
-                    </a>
-                </div>
-                <div style={imageContainerStyle}>
-                    <a href='https://www.rit.edu' target='_blank' rel='noreferrer'>
-                        <img alt='Rochester Institue of Technology' style={imageStyle} src={ritImage}/>
-                    </a>
-                    <a href='https://gtri.gatech.edu' target='_blank' rel='noreferrer'>
-                        <img alt='Georgia Tech Research Institute' style={imageStyle} src={gtriImage}/>
-                    </a>
-                    <a href='https://www.linkedin.com/in/michael-nersinger/' target='_blank' rel='noreferrer'>
-                        <img alt='Linkedin: Michael Nersinger' style={imageStyle} src={linkedinImage}/>
+                    <a href={config.TRELLO_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.TRELLO_ALT} style={imageStyle} src={trelloImage}/>
                     </a>
                 </div>
                 <div style={imageContainerStyle}>
-                    <a href='https://www.firstinspires.org' target='_blank' rel='noreferrer'>
-                        <img alt='FIRST Robotics' style={imageStyle} src={firstImage}/>
+                    <a href={config.RIT_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.RIT_ALT} style={imageStyle} src={ritImage}/>
                     </a>
-                    <a href='https://www.bing.com' target='_blank' rel='noreferrer'>
-                        <img alt='Bing' style={imageStyle} src={bingImage}/>
+                    <a href={config.GTRI_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.GTRI_ALT} style={imageStyle} src={gtriImage}/>
                     </a>
-                    <a href='https://www.google.com/' target='_blank' rel='noreferrer'>
-                        <img alt='Google' style={imageStyle} src={googleImage}/>
+                    <a href={config.LINKEDIN_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.LINKEDIN_ALT} style={imageStyle} src={linkedinImage}/>
+                    </a>
+                </div>
+                <div style={imageContainerStyle}>
+                    <a href={config.FIRST_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.FIRST_ALT} style={imageStyle} src={firstImage}/>
+                    </a>
+                    <a href={config.BING_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.BING_ALT} style={imageStyle} src={bingImage}/>
+                    </a>
+                    <a href={config.GOOGLE_LINK} target='_blank' rel='noreferrer'>
+                        <img alt={config.GOOGLE_ALT} style={imageStyle} src={googleImage}/>
                     </a>
                 </div>
             </div>
             <div style={{ flex: '1' }}></div>
             <div style={{ flex: '4' }}>
-                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}> Feed </div>
+                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}>
+                    {config.FEED_SECTION}
+                </div>
                 <div style={paddingBarStyle}></div>
-                <InfoCard title="Welcome!"  center={true} description={`Test message.`}/>
+                <InfoCard title={config.FEED_MESSAGE_1_TITLE}  center={true} description={config.FEED_MESSAGE_1_DESC}/>
             </div>
         </div>
     );

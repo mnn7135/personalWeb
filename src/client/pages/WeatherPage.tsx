@@ -7,6 +7,9 @@ import InfoListCard from "../components/InfoListCard";
 import IWeatherHelperService from "../../server/weather/weatherhelper.service";
 import { ISunDataResult } from "../../server/domain/sundataresult.domain";
 import IWeatherPredictionService from "../../server/weather/weatherprediction.service";
+import { IAppConfig, loadAppConfig } from "./appConfig.service";
+
+const config: IAppConfig = loadAppConfig();
 
 const PAGE_COLOR = '#191919';
 
@@ -123,9 +126,7 @@ function WeatherPage(props: {
                                 `${currentWeatherData.dewPoint.toFixed(1)}° F`,
                                 '']
                             } 
-                            dataTitles={
-                                ['Sunrise', 'Sunset', 'Wind', 'Pressure', 'Wind Gusts', 'UV Index', 'Humidity', 'Hourly Rainfall', 'Dew Point']
-                            }/> : ''}
+                            dataTitles={config.WEATHER_DATA_LABELS_LIST}/> : ''}
                         <div style={{ fontSize: '12px', paddingTop: '10px' }}>{`* Sunrise and sunset data provided by https://sunrise-sunset.org/api.`}</div>
                         <div style={{ fontSize: '12px', paddingBottom: '10px' }}>{`* One standard atmosphere of pressure equals 1013.25 millibars at sea level.`}</div>
                         <div style={paddingBarStyle}></div>

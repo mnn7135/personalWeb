@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/personalWeb/static/css/main.f855e6bc.css",
-    "main.js": "/personalWeb/static/js/main.cd2c597a.js",
+    "main.js": "/personalWeb/static/js/main.784810a4.js",
     "static/js/453.2684e94b.chunk.js": "/personalWeb/static/js/453.2684e94b.chunk.js",
-    "static/media/bing.jpg": "/personalWeb/static/media/bing.0d0bad0273445b3e7950.jpg",
+    "static/media/astr_space_2.jpg": "/personalWeb/static/media/astr_space_2.48f49bfe4e845960d50a.jpg",
+    "static/media/bing.jpg": "/personalWeb/static/media/bing.e74a90bf6ea9df62508f.jpg",
+    "static/media/astr_space_1.jpg": "/personalWeb/static/media/astr_space_1.0b4437ea2644d0b5ebda.jpg",
     "static/media/lin.jpg": "/personalWeb/static/media/lin.03aeed1f655554b83738.jpg",
-    "static/media/astr_space_2.jpg": "/personalWeb/static/media/astr_space_2.780f931674d43dbd299c.jpg",
-    "static/media/astr_space_1.jpg": "/personalWeb/static/media/astr_space_1.53ec80153f686be8b307.jpg",
     "static/media/google.jpg": "/personalWeb/static/media/google.a66774b11bfe973fe45f.jpg",
     "static/media/trello.jpg": "/personalWeb/static/media/trello.ffbeea8a8d593ec568a0.jpg",
     "static/media/stack.jpg": "/personalWeb/static/media/stack.749a9928307c77d49b15.jpg",
@@ -16,11 +16,11 @@
     "static/media/astr_moon.jpg": "/personalWeb/static/media/astr_moon.4932a690ca8c05d7b802.jpg",
     "index.html": "/personalWeb/index.html",
     "main.f855e6bc.css.map": "/personalWeb/static/css/main.f855e6bc.css.map",
-    "main.cd2c597a.js.map": "/personalWeb/static/js/main.cd2c597a.js.map",
+    "main.784810a4.js.map": "/personalWeb/static/js/main.784810a4.js.map",
     "453.2684e94b.chunk.js.map": "/personalWeb/static/js/453.2684e94b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.cd2c597a.js"
+    "static/js/main.784810a4.js"
   ]
 }

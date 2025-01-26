@@ -1,6 +1,6 @@
 export const NAVBAR_DARK_COLOR = 'white';
-export const NAVBAR_MEDIUM_COLOR = '#1D2023';
-export const NAVBAR_LIGHT_COLOR = '#2B2C2D';
+export const NAVBAR_MEDIUM_COLOR = '#292929';
+export const NAVBAR_LIGHT_COLOR = '#474747';
 
 export const infoCardOuterStyle : React.CSSProperties = {
     border: 'solid ' + NAVBAR_DARK_COLOR,

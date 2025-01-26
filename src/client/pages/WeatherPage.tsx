@@ -79,13 +79,17 @@ function WeatherPage(props: {
                         <div style={{ flex: '2' }}></div>
                     </div>
                     <div style={paddingBarStyle}></div>
-                    <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>Later</div>
+                    <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>
+                        {config.SIX_HOUR_SECTION}
+                    </div>
                     <div style={paddingBarStyle}></div>
                     <div style={{ display: 'flex', ...appStyling }}>
                         <div style={{ flex: '0.5' }}>
                         </div>
                         <div style={{ flex: '2' }}>
-                            <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>6 Hour</div>
+                            <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>
+                                {config.TOMORROW_CARD}
+                            </div>
                             <div style={paddingBarStyle}></div>
                             <WeatherCard title={predictionService?.predictWeather(predict6Hour)} 
                             icon={helperService?.getWeatherIcon(sixHourWeather, predict6Hour) ?? faEllipsis} 
@@ -94,7 +98,9 @@ function WeatherPage(props: {
                         <div style={{ flex: '0.5' }}>
                         </div>
                         <div style={{ flex: '2' }}>
-                            <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>24 Hour</div>
+                            <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>
+                                {config.TWO_DAY_CARD}
+                            </div>
                             <div style={paddingBarStyle}></div>
                             <WeatherCard title={predictionService?.predictWeather(predict24Hour)} 
                             icon={helperService?.getWeatherIcon(twentyFourHourWeather, predict24Hour) ?? faEllipsis} 
@@ -103,11 +109,13 @@ function WeatherPage(props: {
                         <div style={{ flex: '0.5' }}>
                         </div>
                         <div style={{ flex: '2' }}>
-                            <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>24 Hour</div>
+                            <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>
+                                {config.THREE_DAY_CARD}
+                            </div>
                             <div style={paddingBarStyle}></div>
                             <WeatherCard title={predictionService?.predictWeather(predict24Hour)} 
                             icon={helperService?.getWeatherIcon(twentyFourHourWeather, predict24Hour) ?? faEllipsis} 
-                            data={`High ${predictionService?.predictTemperature(predict24Hour).toFixed(1)}° F`}/>
+                            data={`${config.HIGH_LABEL} ${predictionService?.predictTemperature(predict24Hour).toFixed(1)}${config.DEGREE_FAHRENHEIGHT}`}/>
                         </div>
                         <div style={{ flex: '0.5' }}>
                         </div>
@@ -117,32 +125,33 @@ function WeatherPage(props: {
                         <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>Right Now | Current Conditions</div>
                         <div style={paddingBarStyle}></div>
                         {currentWeatherData && sunData && helperService ? <InfoListCard sideBySide={false} 
-                            data={
-                                [`${new Date(sunData.sunrise).toLocaleTimeString()}*`, 
+                            data={[`${new Date(sunData.sunrise).toLocaleTimeString()}*`, 
                                 `${new Date(sunData.sunset).toLocaleTimeString()}*`, 
-                                `${currentWeatherData.windspdmph_avg10m} mph from ${helperService.getWindDirection(currentWeatherData.winddir_avg10m)}`, 
-                                `${helperService.getPressureMbar(currentWeatherData.baromrelin).toFixed(1)} mbar*`,
-                                `${currentWeatherData.windgustmph} mph from ${helperService.getWindDirection(currentWeatherData.winddir)}`,
+                                `${currentWeatherData.windspdmph_avg10m} ${config.WIND_SPEED_MPH_DIR} ${helperService.getWindDirection(currentWeatherData.winddir_avg10m)}`, 
+                                `${helperService.getPressureMbar(currentWeatherData.baromrelin).toFixed(1)} ${config.PRESSURE_MBAR}*`,
+                                `${currentWeatherData.windgustmph} ${config.WIND_SPEED_MPH_DIR} ${helperService.getWindDirection(currentWeatherData.winddir)}`,
                                 `${currentWeatherData.uv} ${helperService.getUVRisk(currentWeatherData.uv)}`,
                                 `${currentWeatherData.humidity}%`,
-                                `${currentWeatherData.hourlyrainin.toFixed(2)} in`, 
-                                `${currentWeatherData.dewPoint.toFixed(1)}° F`,
-                                '']
-                            } 
+                                `${currentWeatherData.hourlyrainin.toFixed(2)} ${config.INCHES}`, 
+                                `${currentWeatherData.dewPoint.toFixed(1)}${config.DEGREE_FAHRENHEIGHT}`,
+                                ''
+                            ]} 
                             dataTitles={config.WEATHER_DATA_LABELS_LIST}/> : ''}
-                        <div style={{ fontSize: '20px', paddingTop: '10px' }}>{`* Sunrise and sunset data provided by https://sunrise-sunset.org/api.`}</div>
-                        <div style={{ fontSize: '20px', paddingBottom: '10px' }}>{`* One standard atmosphere of pressure equals 1013.25 millibars at sea level.`}</div>
+                        <div style={{ fontSize: '20px', paddingTop: '10px' }}>{config.SUNRISE_SUNSET_DISCLAIMER}</div>
+                        <div style={{ fontSize: '20px', paddingBottom: '10px' }}>{config.MBAR_DISCLAIMER}</div>
                         <div style={paddingBarStyle}></div>
-                        <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>Live Data</div>
+                        <div style={{ fontSize: '40px', textAlign: 'center', color: 'white', padding: '10px' }}>
+                            {config.LIVE_DATA_SECTION}
+                        </div>
                         <div style={paddingBarStyle}></div>
                         <div style={{ textAlign: 'center', color: 'white', padding: '10px'  }}>
                             {'WIP'}
                         </div>
                         <div style={paddingBarStyle}></div>
                         <div>
-                            {currentWeatherData ? <div style={{ fontSize: '20px', paddingTop: '20px' }}>{`Last pull from ${new Date(currentWeatherData.date).toLocaleString()}`}</div> : ''}
-                            <div style={{ fontSize: '20px' }}>{`Last maintenanced on 8/4/2023, 11:45:00 AM`}</div>
-                            <div style={{ fontSize: '20px' }}>{`Phoenix Station is my personal AmbientWeather WS-2000 Smart Station`}</div>
+                            {currentWeatherData ? <div style={{ fontSize: '20px', paddingTop: '20px' }}>{config.LAST_PULL_FROM + ' ' + new Date(currentWeatherData.date).toLocaleString()}</div> : ''}
+                            <div style={{ fontSize: '20px' }}>{config.LAST_MAINTENANCE}</div>
+                            <div style={{ fontSize: '20px' }}>{config.WEATHER_STATION_DISCLAIMER}</div>
                         </div>
                     </div>
                 </div>

@@ -33,10 +33,7 @@ jobs:
 
       # Install your linters here
       - name: Install eslint
-        run: npm install eslint
+        run: npm install eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          # Enable your linters here
-          tsc: true
+        run: npx eslint 'src/**/*.{js,ts}'

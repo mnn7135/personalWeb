@@ -36,7 +36,7 @@ export default class IWeatherDataService {
     public getWeatherDataEndDate(endDate: Date): Promise<IWeatherData[]> {
         // TODO: Implement date conversion and modify query
         return this.serviceHelper.fetchList<IWeatherData>({
-            url: this.baseStationUrl
+            url: this.baseStationUrl + endDate.toDateString
         });
     }
 

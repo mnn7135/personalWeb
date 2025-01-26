@@ -1,33 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
-const NAVBAR_DARK_COLOR = '#080A0C';
-const NAVBAR_MEDIUM_COLOR = '#1D2023';
-const NAVBAR_LIGHT_COLOR = '#2B2C2D';
-
-const infoCardOuterStyle : React.CSSProperties = {
-    border: 'solid ' + NAVBAR_DARK_COLOR,
-    backgroundColor: NAVBAR_MEDIUM_COLOR,
-    padding: '5px',
-    borderWidth: '5px 5px 5px 5px',
-    borderRadius: '20px',
-    marginTop: '10px',
-    marginBottom: '10px'
-}
-
-const infoCardInnerStyle : React.CSSProperties = {
-    padding: '10px',
-    backgroundColor: NAVBAR_LIGHT_COLOR,
-    borderWidth: '5px 5px 5px 5px',
-    borderRadius: '20px'
-}
-
-const paddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'white', 
-    height: '3px', 
-    paddingLeft: '5px', 
-    paddingRight: '5px'
-}
+import { infoCardOuterStyle, infoCardInnerStyle, paddingBarStyle } from './componentStyle';
 
 function WeatherCard(props: {
     title?: string;
@@ -38,7 +11,7 @@ function WeatherCard(props: {
     subTitle?: string;
 }) {
     const fontSizeStyle = props.larger ? '100px' : '60px';
-    const iconSize = props.larger ? '10x' : '6x';
+    const iconSize = props.larger ? '8x' : '4x';
 
     return (
         <div style={{ fontSize: '32px', ...infoCardOuterStyle }}>

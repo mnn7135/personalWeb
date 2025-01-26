@@ -18,7 +18,7 @@ export default class IWeatherHelperService {
      * @returns The direction, as a string, from which the comes from.
      */
     public getWindDirection(windAngle: number): string {
-        var windDirection = '';
+        let windDirection = '';
 
         if ((windAngle >= 348.75 && windAngle <= 360) || windAngle < 11.25) {
             windDirection = 'N';
@@ -64,7 +64,7 @@ export default class IWeatherHelperService {
      * @returns The risk factor based on the UV index.
      */
     public getUVRisk(uvIndex: number): string {
-        var uvRisk = '';
+        let uvRisk = '';
 
         if (uvIndex <= 2) {
             uvRisk = '(Low Risk)';
@@ -82,7 +82,7 @@ export default class IWeatherHelperService {
     }
 
     public getActiveAlerts(): string {
-        var alertMessage = '';
+        let alertMessage = '';
         const nowIndex = 0;
 
         const maxGust = this.getMaxGustSpeed();
@@ -93,7 +93,7 @@ export default class IWeatherHelperService {
         
         if ((maxGust >= 46 && maxGust <= 57) || (maxWind >= 31 && maxWind >= 39)) {
             alertMessage = "WIND ADVISORY";
-        } else if (maxGust >= 58 || maxWind >= 40) {
+        } else if ((maxGust >= 58 || maxWind >= 40) && hourlyRain < 1) {
             alertMessage = "HIGH WIND WARNING";
         } else if (maxTemp < 105 && maxTemp >= 100) {
             alertMessage = "HEAT ADVISORY";
@@ -115,8 +115,8 @@ export default class IWeatherHelperService {
     }
 
     public getMaxTemp(): number {
-        var maxTemp = 0;
-        for (var data of this.weatherData) {
+        let maxTemp = 0;
+        for (const data of this.weatherData) {
             if (data.tempf > maxTemp) {
                 maxTemp = data.tempf;
             }
@@ -125,8 +125,8 @@ export default class IWeatherHelperService {
     }
 
     public getMaxGustSpeed(): number {
-        var maxTemp = 0;
-        for (var data of this.weatherData) {
+        let maxTemp = 0;
+        for (const data of this.weatherData) {
             if (data.windgustmph > maxTemp) {
                 maxTemp = data.tempf;
             }
@@ -135,8 +135,8 @@ export default class IWeatherHelperService {
     }
 
     public getMaxWindSpeed(): number {
-        var maxTemp = 0;
-        for (var data of this.weatherData) {
+        let maxTemp = 0;
+        for (const data of this.weatherData) {
             if (data.windspdmph_avg10m> maxTemp) {
                 maxTemp = data.tempf;
             }
@@ -168,7 +168,7 @@ export default class IWeatherHelperService {
     }
 
     public getPressureDataTrend(timeDifference: number) {
-        var compareToIndex = timeDifference * 5;
+        let compareToIndex = timeDifference * 5;
         if (compareToIndex > 280) {
             compareToIndex = 280;
         }
@@ -177,7 +177,7 @@ export default class IWeatherHelperService {
     }
 
     public getHumidityDataTrend(timeDifference: number) {
-        var compareToIndex = timeDifference * 5;
+        let compareToIndex = timeDifference * 5;
         if (compareToIndex > 280) {
             compareToIndex = 280;
         }
@@ -186,7 +186,7 @@ export default class IWeatherHelperService {
     }
 
     public getTemperatureDataTrend(timeDifference: number) {
-        var compareToIndex = timeDifference * 12;
+        let compareToIndex = timeDifference * 12;
         if (compareToIndex > 280) {
             compareToIndex = 280;
         }
@@ -226,7 +226,7 @@ export default class IWeatherHelperService {
     }
 
     public getWeatherCondition(): string {
-        var weatherCondition = '';
+        let weatherCondition = '';
 
         const maxWindSpeed = this.weatherData[0].windspdmph_avg10m;
         const isDaytime = new Date(this.getCurrentTimeEST()).getHours() >= new Date(this.sunData.sunrise).getHours() 

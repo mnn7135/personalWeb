@@ -14,11 +14,11 @@ export default class IWeatherPredictionService {
     }
 
     public predictWeather(day: Date): string {
-        var weatherDesc = '';
-        var hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTimeEST()).getDay())*24 + 
+        let weatherDesc = '';
+        const hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTimeEST()).getDay())*24 + 
             (new Date(day).getHours() - new Date(this.helperService.getCurrentTimeEST()).getHours());
 
-        var compareToIndex = hourDifference*12;
+        let compareToIndex = hourDifference*12;
         if (compareToIndex > 280) {
             compareToIndex = 280;
         }
@@ -29,28 +29,28 @@ export default class IWeatherPredictionService {
         const temperatureTrend = this.helperService.getTemperatureDataTrend(hourDifference);
         const humidityTrend = this.helperService.getHumidityDataTrend(hourDifference);
 
-        var pressureFactor = 25;
+        let pressureFactor = 25;
         if (pressureTrend > 0.25) {
             pressureFactor = 45;
         } else if (pressureFactor < -0.25) {
             pressureFactor = -35;
         }
 
-        var temperatureFactor = 25;
+        let temperatureFactor = 25;
         if (temperatureTrend > 0.25) {
             temperatureFactor = 25;
         } else if (temperatureTrend < -0.25) {
             temperatureFactor = -25;
         }
 
-        var rainFactor = 0;
+        let rainFactor = 0;
         if (this.weatherData[0].dailyrainin > 0) {
             rainFactor = -25;
         } else if (this.weatherData[0].dailyrainin > 0.25 && pressureFactor < 0) {
             rainFactor = -50;
         }
 
-        var humidityFactor = 25;
+        let humidityFactor = 25;
         if (humidityTrend > 0 && this.weatherData[0].humidity > 75) {
             humidityFactor = -30;
         }
@@ -85,7 +85,7 @@ export default class IWeatherPredictionService {
     }
 
     public predictTemperature(day: Date) {
-        var hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTimeEST()).getDay())*24 + 
+        const hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTimeEST()).getDay())*24 + 
             (new Date(day).getHours() - new Date(this.helperService.getCurrentTimeEST()).getHours());
 
         return this.helperService.getTemperatureDataTrend(hourDifference) * this.helperService.getTemperatureTrend(day)*hourDifference + this.weatherData[0].tempf;

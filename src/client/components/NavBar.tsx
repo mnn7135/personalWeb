@@ -1,61 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-const NAVBAR_DARK_COLOR = '#080A0C';
-const NAVBAR_MEDIUM_COLOR = '#1D2023';
-const NAVBAR_LIGHT_COLOR = '#2B2C2D';
-
-const personalWebNavBarBlockStyle : React.CSSProperties = {
-    fontFamily: 'Calibri',
-    fontWeight: 'bold',
-    fontSize: '30px',
-    backgroundColor: 'white',
-    display: 'flex',
-    flexFlow: 'row wrap',
-    paddingLeft: '0px',
-    paddingRight: '20px',
-};
-
-const personalWebNavBarTabSelectedStyle : React.CSSProperties = {
-    backgroundColor: NAVBAR_MEDIUM_COLOR,
-    paddingLeft: '20px',
-    paddingRight: '20px',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    cursor: 'pointer',
-    border: 'solid ' + NAVBAR_DARK_COLOR,
-    borderWidth: '3px 3px 0px 3px',
-    borderTopLeftRadius: '20px',
-    borderTopRightRadius: '20px'
-};
-
-const personalWebNavBarTabUnselectedStyle : React.CSSProperties = {
-    backgroundColor: NAVBAR_LIGHT_COLOR,
-    paddingLeft: '20px',
-    paddingRight: '20px',
-    paddingTop: '10px',
-    paddingBottom: '10px',
-    cursor: 'pointer',
-    border: 'solid ' + NAVBAR_DARK_COLOR,
-    borderWidth: '3px 3px 0px 3px',
-    borderTopLeftRadius: '20px',
-    borderTopRightRadius: '20px'
-};
-
-const personalWebNavBarTabFooterStyle : React.CSSProperties = {
-    backgroundColor: NAVBAR_MEDIUM_COLOR,
-    paddingBottom: '12px'
-};
-
-const personalWebNavBarTabFooterBottomStyle : React.CSSProperties = {
-    backgroundColor: 'white',
-    paddingBottom: '6px'
-};
-
-const personalWebNavBarLinkStyle : React.CSSProperties = {
-    color: 'white',
-    textDecoration: 'none'
-};
+import { personalWebNavBarBlockStyle, personalWebNavBarTabSelectedStyle, personalWebNavBarTabUnselectedStyle, personalWebNavBarLinkStyle, personalWebNavBarTabFooterStyle, personalWebNavBarTabFooterBottomStyle } from "./componentStyle";
 
 function PersonalWebNavBar(props: {
     tabs: string[];

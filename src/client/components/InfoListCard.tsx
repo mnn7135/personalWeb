@@ -1,37 +1,4 @@
-const NAVBAR_DARK_COLOR = '#080A0C';
-const NAVBAR_MEDIUM_COLOR = '#1D2023';
-const NAVBAR_LIGHT_COLOR = '#2B2C2D';
-
-const infoCardOuterStyle : React.CSSProperties = {
-    border: 'solid ' + NAVBAR_DARK_COLOR,
-    backgroundColor: NAVBAR_MEDIUM_COLOR,
-    padding: '5px',
-    borderWidth: '5px 5px 5px 5px',
-    borderRadius: '20px',
-    marginTop: '10px',
-    marginBottom: '10px'
-}
-
-const infoCardInnerStyle : React.CSSProperties = {
-    padding: '10px',
-    backgroundColor: NAVBAR_LIGHT_COLOR,
-    borderWidth: '5px 5px 5px 5px',
-    borderRadius: '20px'
-}
-
-const paddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'white', 
-    height: '3px', 
-    paddingLeft: '5px', 
-    paddingRight: '5px'
-}
-
-const paddingBarListStyle : React.CSSProperties = {
-    backgroundColor: NAVBAR_MEDIUM_COLOR, 
-    height: '2px', 
-    paddingLeft: '5px', 
-    paddingRight: '5px'
-}
+import { infoCardOuterStyle, paddingBarStyle, infoCardInnerStyle, paddingBarListStyle } from "./componentStyle";
 
 function InfoListCard(props: {
     title?: string;

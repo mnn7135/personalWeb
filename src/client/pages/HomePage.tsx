@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
 import { IAppConfig, loadAppConfig } from './appConfig.service';
-import InfoCard from "../components/InfoCard";
+import InfoCard from '../components/InfoCard';
 import { appStyling, imageContainerStyle, paddingBarStyle } from './pageStyle';
+import bingImage from './images/bing.jpg';
+import firstImage from './images/first.jpg';
+import gitImage from './images/git.jpg';
+import linkedinImage from './images/lin.jpg';
+import gtriImage from './images/gtri.jpg';
+import stackoveflowImage from './images/stack.jpg';
+import googleImage from './images/google.jpg';
+import ritImage from './images/ritp.jpg';
+import trelloImage from './images/trello.jpg';
 
 const config: IAppConfig = loadAppConfig();
 
-const bingImage = require(config.BING_IMG_SRC + "");
-const firstImage = require(config.FIRST_IMG_SRC + "");
-const gitImage = require(config.GIT_IMG_SRC + "");
-const linkedinImage = require(config.LINKEDIN_IMG_SRC + "");
-const gtriImage = require(config.GTRI_IMAGE_STC + "");
-const stackoveflowImage = require(config.STACK_OVERFLOW_IMG_SRC + "");
-const googleImage = require(config.GOOGLE_IMG_SRC + "");
-const ritImage = require(config.RIT_IMG_SRC + "");
-const trelloImage = require(config.TRELLO_IMG_SRC + "");
-
-function HomePage(props: {}) {
+function HomePage() {
     const [imageSize, setImageSize] = useState<number>(200*window.innerWidth/1920);
 
     useEffect(() => {

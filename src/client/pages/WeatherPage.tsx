@@ -17,9 +17,7 @@ function addHours(date: Date, hours: number) {
     return date;
 }
 
-function WeatherPage(props: {
-
-}) {
+function WeatherPage() {
     const dataService = new IWeatherDataService();
     const [helperService, setHelperService] = useState<IWeatherHelperService | undefined>(undefined);
     const [predictionService, setPredictionService] = useState<IWeatherPredictionService | undefined>(undefined);

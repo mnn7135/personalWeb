@@ -5,7 +5,7 @@ import { appStyling, paddingBarStyle } from './pageStyle';
 
 const config: IAppConfig = loadAppConfig();
 
-function AboutPage(props: {}) {
+function AboutPage() {
     return (
         <div>
             <div style={{ display: 'flex', ...appStyling }}>

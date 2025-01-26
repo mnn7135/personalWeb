@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { IAppConfig, loadAppConfig } from './appConfig.service';
 import { appStyling, imageContainerStyleMinimal, paddingBarStyle } from './pageStyle';
+import astrImage1 from './images/astr_space_1.jpg'
+import astrImage2 from './images/astr_space_2.jpg'
+import astrImage3 from './images/astr_moon.jpg'
 
 const config: IAppConfig = loadAppConfig();
 
-const astrImage1 = require(config.ASTRONOMY_IMG_1_SRC + "");
-const astrImage2 = require(config.ASTRONOMY_IMG_2_SRC + "");
-const astrImage3 = require(config.ASTRONOMY_IMG_3_SRC + "");
-
-function AstronomyPage(props: {}) {
+function AstronomyPage() {
     const [imageWidth, setImageWidth] = useState<number>(1000);
     const [imageHeight, setImageHeight] = useState<number>(500);
 

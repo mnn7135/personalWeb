@@ -9,7 +9,7 @@ import { pageStyling, smallPaddingBarStyle, webAppStyling } from './pageStyle';
 
 const config: IAppConfig = loadAppConfig();
 
-function PersonalWebApp(props: {}) {
+function PersonalWebApp() {
     return (
         <div style={webAppStyling} className="PersonalWebApp">
       <HashRouter basename='/'>

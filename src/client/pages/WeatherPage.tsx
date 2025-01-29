@@ -22,16 +22,28 @@ function WeatherPage() {
     const [helperService, setHelperService] = useState<IWeatherHelperService | undefined>(undefined);
     const [predictionService, setPredictionService] = useState<IWeatherPredictionService | undefined>(undefined);
     const [weatherData, setWeatherData] = useState<IWeatherData[] | undefined>(undefined);
+    const [lastWeekWeatherData, setLastWeekWeatherData] = useState<IWeatherData[] | undefined>(undefined);
     const [sunData, setSunData] = useState<ISunDataResult | undefined>(undefined);
     const [currentWeatherData, setCurrentWeatherData] = useState<IWeatherData | undefined>(undefined);
-    const [sixHourWeather, setSixHourWeather] = useState<string>('Sunny');
-    const [twentyFourHourWeather, setTwentyFourHourWeather] = useState<string>('Sunny');
-    const predict6Hour = addHours(new Date(), 6);
-    const predict24Hour = addHours(new Date(), 24);
+
+    const [oneDayWeather, setOneDayWeather] = useState<string>('Sunny');
+    const [twoDayWeather, setTwoDayWeather] = useState<string>('Sunny');
+    const [threeDayWeather, setThreeDayWeather] = useState<string>('Sunny');
+    
+    const predictOneDay = addHours(new Date(), 24);
+    const predictTwoDay = addHours(new Date(), 48);
+    const predictThreeDay = addHours(new Date(), 72);
+    const lastWeekWeatherDay = addHours(new Date(), -168);
+
+    function sleep(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
 
     useEffect(() => {
         const fetchData = async() => {
             setWeatherData(await dataService.getWeatherData());
+            await sleep(1000);
+            setLastWeekWeatherData(await dataService.getWeatherDataEndDate(lastWeekWeatherDay));
             setSunData((await dataService.getSunData()).results);
         };
 
@@ -42,19 +54,20 @@ function WeatherPage() {
     });
 
     useEffect(() => {
-        if (weatherData != null && sunData != null) {
+        if (weatherData != null && sunData != null && lastWeekWeatherData != null) {
             setCurrentWeatherData(weatherData[0]);
-            setHelperService(new IWeatherHelperService(sunData, weatherData));
-            setPredictionService(new IWeatherPredictionService(sunData, weatherData));
+            setHelperService(new IWeatherHelperService(sunData, weatherData, lastWeekWeatherData));
+            setPredictionService(new IWeatherPredictionService(sunData, weatherData, lastWeekWeatherData));
         }
-    }, [weatherData, sunData]);
+    }, [weatherData, sunData, lastWeekWeatherData]);
 
     useEffect(() => {
         if (predictionService != null) {
-            setSixHourWeather(predictionService.predictWeather(predict6Hour));
-            setTwentyFourHourWeather(predictionService.predictWeather(predict24Hour));
+            setOneDayWeather(predictionService.predictWeather(predictOneDay));
+            setTwoDayWeather(predictionService.predictWeather(predictTwoDay));
+            setThreeDayWeather(predictionService.predictWeather(predictThreeDay));
         }
-    }, [predictionService, predict24Hour, predict6Hour]);
+    }, [predictionService, predictOneDay, predictTwoDay, predictThreeDay]);
 
     return (
         <div>
@@ -69,10 +82,11 @@ function WeatherPage() {
                         <div style={{ flex: '8' }}>
                         <WeatherCard icon={ helperService?.getWeatherIcon(helperService.getWeatherCondition(), new Date()) ?? faEllipsis} 
                             larger={true} 
-                            data={currentWeatherData ? currentWeatherData.tempf.toFixed(1) : ''}
+                            data={currentWeatherData ? currentWeatherData.tempf.toFixed(0) : ''}
                             temperature={true}
                             title={helperService?.getWeatherCondition()}
-                            subTitle={`Feels Like ${currentWeatherData ? currentWeatherData.feelsLike.toFixed(1) : ''}`}/>
+                            superTitle={'Monday'}
+                            subTitle={`Feels Like ${currentWeatherData ? currentWeatherData.feelsLike.toFixed(0) : ''}`}/>
                         </div>
                         <div style={{ flex: '2' }}></div>
                     </div>
@@ -89,9 +103,10 @@ function WeatherPage() {
                                 {config.TOMORROW_CARD}
                             </div>
                             <div style={paddingBarStyle}></div>
-                            <WeatherCard title={predictionService?.predictWeather(predict6Hour)} 
-                            icon={helperService?.getWeatherIcon(sixHourWeather, predict6Hour) ?? faEllipsis} 
-                            data={`Low ${predictionService?.predictTemperature(predict6Hour).toFixed(1)}° F`}/>
+                            <WeatherCard title={predictionService?.predictWeather(predictOneDay)} 
+                            icon={helperService?.getWeatherIcon(oneDayWeather, predictOneDay) ?? faEllipsis} 
+                            superTitle="Tuesday"
+                            data={`${predictionService?.predictTemperature(predictOneDay).toFixed(0)}° F`}/>
                         </div>
                         <div style={{ flex: '0.5' }}>
                         </div>
@@ -100,9 +115,10 @@ function WeatherPage() {
                                 {config.TWO_DAY_CARD}
                             </div>
                             <div style={paddingBarStyle}></div>
-                            <WeatherCard title={predictionService?.predictWeather(predict24Hour)} 
-                            icon={helperService?.getWeatherIcon(twentyFourHourWeather, predict24Hour) ?? faEllipsis} 
-                            data={`High ${predictionService?.predictTemperature(predict24Hour).toFixed(1)}° F`}/>
+                            <WeatherCard title={predictionService?.predictWeather(predictTwoDay)} 
+                                icon={helperService?.getWeatherIcon(twoDayWeather, predictTwoDay) ?? faEllipsis} 
+                                data={`${predictionService?.predictTemperature(predictTwoDay).toFixed(0)}° F`}
+                            />
                         </div>
                         <div style={{ flex: '0.5' }}>
                         </div>
@@ -111,9 +127,10 @@ function WeatherPage() {
                                 {config.THREE_DAY_CARD}
                             </div>
                             <div style={paddingBarStyle}></div>
-                            <WeatherCard title={predictionService?.predictWeather(predict24Hour)} 
-                            icon={helperService?.getWeatherIcon(twentyFourHourWeather, predict24Hour) ?? faEllipsis} 
-                            data={`${config.HIGH_LABEL} ${predictionService?.predictTemperature(predict24Hour).toFixed(1)}${config.DEGREE_FAHRENHEIGHT}`}/>
+                            <WeatherCard title={predictionService?.predictWeather(predictThreeDay)} 
+                                icon={helperService?.getWeatherIcon(threeDayWeather, predictThreeDay) ?? faEllipsis} 
+                                data={`${predictionService?.predictTemperature(predictThreeDay).toFixed(0)}${config.DEGREE_FAHRENHEIGHT}`}
+                            />
                         </div>
                         <div style={{ flex: '0.5' }}>
                         </div>
@@ -147,7 +164,7 @@ function WeatherPage() {
                         </div>
                         <div style={paddingBarStyle}></div>
                         <div>
-                            {currentWeatherData ? <div style={{ fontSize: '20px', paddingTop: '20px' }}>{config.LAST_PULL_FROM + ' ' + new Date(currentWeatherData.date).toLocaleString()}</div> : ''}
+                            {currentWeatherData ? <div style={{ fontSize: '20px', paddingTop: '20px' }}>{config.LAST_PULL_FROM + ' ' + new Date().toLocaleString()}</div> : ''}
                             <div style={{ fontSize: '20px' }}>{config.LAST_MAINTENANCE}</div>
                             <div style={{ fontSize: '20px' }}>{config.WEATHER_STATION_DISCLAIMER}</div>
                         </div>

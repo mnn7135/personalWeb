@@ -45,6 +45,7 @@ function AboutPage() {
                             <InfoCard title={config.PROJECT_1_TITLE} 
                                 secondTitle={config.PROJECT_1_SKILLS}
                                 description={config.PROJECT_1_DESCRIPTION}/>
+                            <div style={{ paddingTop: '4px' }}></div>
                             <InfoCard title={config.PROJECT_2_TITLE} 
                                 secondTitle={config.PROJECT_2_SKILLS}
                                 description={config.PROJECT_2_DESCRIPTION}/>
@@ -53,6 +54,7 @@ function AboutPage() {
                             <InfoCard title={config.PROJECT_3_TITLE} 
                                 secondTitle={config.PROJECT_3_SKILLS}
                                 description={config.PROJECT_3_DESCRIPTION}/>
+                            <div style={{ paddingTop: '4px' }}></div>
                         </div>
                     </div>
                 </div>

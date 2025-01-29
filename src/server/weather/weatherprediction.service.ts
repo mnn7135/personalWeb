@@ -3,20 +3,31 @@ import IWeatherHelperService from "./weatherhelper.service";
 import { ISunDataResult } from "../domain/sundataresult.domain";
 
 export default class IWeatherPredictionService {
-    sunData: ISunDataResult;
-    weatherData: IWeatherData[];
-    helperService: IWeatherHelperService;
+    private sunData: ISunDataResult;
+    private weatherData: IWeatherData[];
+    private lastWeekWeatherData: IWeatherData[];
+    private helperService: IWeatherHelperService;
 
-    constructor(sunData: ISunDataResult, weatherData: IWeatherData[]) {
+    constructor(sunData: ISunDataResult, weatherData: IWeatherData[], lastWeekWeatherData: IWeatherData[]) {
         this.sunData = sunData;
         this.weatherData = weatherData;
-        this.helperService = new IWeatherHelperService(sunData, weatherData);
+        this.lastWeekWeatherData = lastWeekWeatherData;
+        this.helperService = new IWeatherHelperService(sunData, weatherData, lastWeekWeatherData);
     }
 
     public predictWeather(day: Date): string {
+        // If pressure is increasing, weather is more likely to be clear skies, etc.
+
+        // If humidity has been increasing, there is a lot of moisture in the air => potential for precipitation or fog
+
+        // If wind speeds have been increasing/maintained, then it is more likely that a new air mass is moving in and the weather will change.
+
+        // 
+
+
         let weatherDesc = '';
-        const hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTimeEST()).getDay())*24 + 
-            (new Date(day).getHours() - new Date(this.helperService.getCurrentTimeEST()).getHours());
+        const hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTime()).getDay())*24 + 
+            (new Date(day).getHours() - new Date(this.helperService.getCurrentTime()).getHours());
 
         let compareToIndex = hourDifference*12;
         if (compareToIndex > 280) {
@@ -25,9 +36,9 @@ export default class IWeatherPredictionService {
         const isDaytime = new Date(day).getHours() >= new Date(this.sunData.sunrise).getHours() && new Date(day).getHours() < new Date(this.sunData.sunset).getHours();
 
         const windMax = this.weatherData[0].windspdmph_avg10m > this.weatherData[compareToIndex].winddir_avg10m ? this.weatherData[compareToIndex].winddir_avg10m: 0;
-        const pressureTrend = this.helperService.getPressureDataTrend(hourDifference);
-        const temperatureTrend = this.helperService.getTemperatureDataTrend(hourDifference);
-        const humidityTrend = this.helperService.getHumidityDataTrend(hourDifference);
+        const pressureTrend = this.helperService.getPressureTrend([...this.weatherData, ...this.lastWeekWeatherData]);
+        const temperatureTrend = this.helperService.getTemperatureTrend([...this.weatherData, ...this.lastWeekWeatherData]);
+        const humidityTrend = this.helperService.getHumidityTrend([...this.weatherData, ...this.lastWeekWeatherData]);
 
         let pressureFactor = 25;
         if (pressureTrend > 0.25) {
@@ -85,9 +96,9 @@ export default class IWeatherPredictionService {
     }
 
     public predictTemperature(day: Date) {
-        const hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTimeEST()).getDay())*24 + 
-            (new Date(day).getHours() - new Date(this.helperService.getCurrentTimeEST()).getHours());
+        const hourDifference = (new Date(day).getDay() - new Date(this.helperService.getCurrentTime()).getDay())*24 + 
+            (new Date(day).getHours() - new Date(this.helperService.getCurrentTime()).getHours());
 
-        return this.helperService.getTemperatureDataTrend(hourDifference) * this.helperService.getTemperatureTrend(day)*hourDifference + this.weatherData[0].tempf;
+        return this.helperService.getTemperatureTrend(this.weatherData)*hourDifference + this.weatherData[0].tempf;
     }
 }

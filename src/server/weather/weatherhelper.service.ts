@@ -111,7 +111,7 @@ export default class IWeatherHelperService {
         const maxGust = this.getMaxGustSpeed(this.weatherData);
         const maxWind = this.getMaxWindSpeed(this.weatherData);
         const maxTemp = this.getMaxTemp(this.weatherData);
-        const windChill = this.getWindChill(this.weatherData[nowIndex].tempf, this.weatherData[nowIndex].winddir_avg10m);
+        const windChill = this.getWindChill(this.weatherData[nowIndex].tempf, this.weatherData[nowIndex].winddir);
         const hourlyRain = this.weatherData[nowIndex].hourlyrainin;
         
         if ((maxGust >= 46 && maxGust <= 57) || (maxWind >= 31 && maxWind >= 39)) {
@@ -219,9 +219,47 @@ export default class IWeatherHelperService {
      * @param weatherData 
      * @returns 
      */
+    public getWindSpeedAverage(weatherData: IWeatherData[]): number {
+        const size = weatherData.length;
+        let sum = 0;
+        for (const data of weatherData) {
+            sum += data.windspeedmph;
+        }
+        return (sum)/size;
+    }
+    
+    /**
+     * 
+     * @param weatherData 
+     * @returns 
+     */
+        public getWindSpeedTrend(weatherData: IWeatherData[]): number {
+            const size = weatherData.length;
+            return (weatherData[size - 1].windspeedmph - weatherData[0].windspeedmph)/size;
+        }
+
+    /**
+     * 
+     * @param weatherData 
+     * @returns 
+     */
     public getTemperatureTrend(weatherData: IWeatherData[]): number {
         const size = weatherData.length;
         return (weatherData[size - 1].tempf - weatherData[0].tempf)/size;
+    }
+
+    /**
+     * 
+     * @param weatherData 
+     * @returns 
+     */
+    public getTemperatureAverage(weatherData: IWeatherData[]): number {
+        const size = weatherData.length;
+        let sum = 0;
+        for (const data of weatherData) {
+            sum += data.tempf;
+        }
+        return (sum)/size;
     }
 
     /**
@@ -239,9 +277,37 @@ export default class IWeatherHelperService {
      * @param weatherData 
      * @returns 
      */
+    public getPressureAverage(weatherData: IWeatherData[]): number {
+        const size = weatherData.length;
+        let sum = 0;
+        for (const data of weatherData) {
+            sum += data.baromrelin;
+        }
+        return (sum)/size;
+    }
+
+    /**
+     * 
+     * @param weatherData 
+     * @returns 
+     */
     public getHumidityTrend(weatherData: IWeatherData[]): number {
         const size = weatherData.length;
-        return (weatherData[size - 1].baromrelin - weatherData[0].baromrelin)/size;
+        return (weatherData[size - 1].humidity - weatherData[0].humidity)/size;
+    }
+
+    /**
+     * 
+     * @param weatherData 
+     * @returns 
+     */
+    public getHumidityAverage(weatherData: IWeatherData[]): number {
+        const size = weatherData.length;
+        let sum = 0;
+        for (const data of weatherData) {
+            sum += data.humidity;
+        }
+        return (sum)/size;
     }
 
     /**
@@ -289,6 +355,27 @@ export default class IWeatherHelperService {
         }
     }
 
+    public getDayStringFromNumber(day: number): string {
+        switch (day) {
+            case 1:
+                return 'Monday';
+            case 2:
+                return 'Tuesday';
+            case 3:
+                return 'Wednesday';
+            case 4:
+                return 'Thursday';
+            case 5:
+                return 'Friday';
+            case 6:
+                return 'Saturday';
+            case 0:
+                return 'Sunday';
+            default:
+                return '';
+        }
+    }
+
     /**
      * 
      * @returns 
@@ -314,9 +401,9 @@ export default class IWeatherHelperService {
             weatherCondition = 'Foggy';
         } else {
             if (isDaytime) {
-                if (this.weatherData[0].uv > 3) {
+                if (this.weatherData[0].solarradiation > 450) {
                     weatherCondition = 'Sunny';
-                } else if (this.weatherData[0].uv <= 3 && this.weatherData[0].uv >= 2) {
+                } else if (this.weatherData[0].solarradiation <= 450 && this.weatherData[0].solarradiation >= 200) {
                     weatherCondition = 'Partly Cloudy';
                 } else {
                     weatherCondition = 'Cloudy';

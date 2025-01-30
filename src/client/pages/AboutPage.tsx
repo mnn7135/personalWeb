@@ -10,7 +10,7 @@ function AboutPage() {
         <div>
             <div style={{ display: 'flex', ...appStyling }}>
                 <div style={{ flex: '12' }}>
-                    <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}>
+                    <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}>
                         {config.ABOUT_TITLE}
                     </div>
                     <div style={paddingBarStyle}></div>
@@ -18,7 +18,7 @@ function AboutPage() {
             </div>
             <div style={{ display: 'flex', padding: '10px', ...appStyling }}>
                 <div style={{ flex: '4', padding: '10px' }}>
-                    <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}>
+                    <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}>
                         {config.DETAILS_SECTION}
                     </div>
                     <div style={paddingBarStyle}></div>
@@ -36,7 +36,7 @@ function AboutPage() {
                     </div>
                 </div>
                 <div style={{ flex: '8', padding: '10px' }}>
-                    <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}>
+                    <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}>
                         {config.PROJECT_SECTION}
                     </div>
                     <div style={paddingBarStyle}></div>

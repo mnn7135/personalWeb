@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { infoCardOuterStyle, infoCardInnerStyle, paddingBarStyle } from './componentStyle';
-import { smallPaddingBarStyle } from '../pages/pageStyle';
 
 function WeatherCard(props: {
     title?: string;
@@ -19,7 +18,7 @@ function WeatherCard(props: {
         <div style={{ fontSize: '32px', ...infoCardOuterStyle }}>
             {props?.superTitle ? <div><div style={{ fontSize: '80px', textAlign: 'center', paddingBottom: '20px', ...infoCardInnerStyle }}>
                 {props?.superTitle}
-            </div><div style={{ paddingBottom: '20px' }}></div><div style={smallPaddingBarStyle}></div><div></div></div> : <></>}
+            </div><div style={{ paddingBottom: '20px' }}></div><div style={{...paddingBarStyle}}></div><div style={{ paddingBottom: '20px' }}></div></div> : <></>}
             <div style={{ textAlign: 'center', ...infoCardInnerStyle }}>
                 <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
                     <FontAwesomeIcon icon={props.icon} size={iconSize}/>

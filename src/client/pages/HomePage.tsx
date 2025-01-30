@@ -34,7 +34,7 @@ function HomePage() {
     return (
         <div style={{ display: 'flex', ...appStyling }}>
             <div style={{ flex: '7' }}>
-                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}> 
+                <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}> 
                     {config.QUCIK_LINKS_SECTION}
                 </div>
                 <div style={paddingBarStyle}></div>
@@ -74,7 +74,7 @@ function HomePage() {
             </div>
             <div style={{ flex: '1' }}></div>
             <div style={{ flex: '4' }}>
-                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}>
+                <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}>
                     {config.FEED_SECTION}
                 </div>
                 <div style={paddingBarStyle}></div>

@@ -1,6 +1,7 @@
 export const NAVBAR_DARK_COLOR = 'white';
-export const NAVBAR_MEDIUM_COLOR = '#292929';
-export const NAVBAR_LIGHT_COLOR = '#474747';
+export const NAVBAR_MEDIUM_COLOR = '#87ceeb';
+export const NAVBAR_LIGHT_COLOR = '#add8e6';
+export const NAVBAR_LIGHTER_COLOR = '#F0FFFF';
 
 export const infoCardOuterStyle : React.CSSProperties = {
     border: 'solid ' + NAVBAR_DARK_COLOR,
@@ -38,7 +39,7 @@ export const personalWebNavBarBlockStyle : React.CSSProperties = {
     fontFamily: 'Calibri',
     fontWeight: 'bold',
     fontSize: '30px',
-    backgroundColor: 'black',
+    backgroundColor: NAVBAR_LIGHTER_COLOR,
     display: 'flex',
     flexFlow: 'row wrap',
     paddingLeft: '0px',

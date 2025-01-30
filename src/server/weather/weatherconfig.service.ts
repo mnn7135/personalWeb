@@ -36,7 +36,19 @@ export interface IWeatherConfig {
   NO_ALERTS: string,
 
   // Conversions
-  INCHES_MERCURY_TO_MBAR_CONVERSION: number
+  INCHES_MERCURY_TO_MBAR_CONVERSION: number,
+
+  // Weather Conditions
+  WEATHER_SUNNY: string,
+  WEATHER_CLOUDS: string,
+  WEATHER_PARTLY_CLOUDS: string,
+  WEATHER_STORM: string,
+  WEATHER_RAIN: string,
+  WEATHER_SNOW: string,
+  WEATHER_CLEAR: string,
+  WEATHER_WIND: string,
+  WEATHER_FOG: string,
+  WEATHER_BREEZE: string
 }
 
 export function loadWeatherConfig(): IWeatherConfig {

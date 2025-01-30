@@ -32,7 +32,7 @@ function PersonalWebApp() {
         <div style={pageStyling}>
           {config.ATTRIBUTION}
           &nbsp;
-          <a style={{ color: 'white' }} href={config.GITHUB_PROJ_LINK} target='_blank' rel='noreferrer'>
+          <a style={{ color: 'black' }} href={config.GITHUB_PROJ_LINK} target='_blank' rel='noreferrer'>
             {config.GITHUB_PROJ_LINK}
           </a>
         </div>

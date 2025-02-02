@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/personalWeb/static/css/main.f855e6bc.css",
-    "main.js": "/personalWeb/static/js/main.784810a4.js",
+    "main.css": "/personalWeb/static/css/main.75b37e2b.css",
+    "main.js": "/personalWeb/static/js/main.979a794c.js",
     "static/js/453.2684e94b.chunk.js": "/personalWeb/static/js/453.2684e94b.chunk.js",
     "static/media/astr_space_2.jpg": "/personalWeb/static/media/astr_space_2.48f49bfe4e845960d50a.jpg",
     "static/media/bing.jpg": "/personalWeb/static/media/bing.e74a90bf6ea9df62508f.jpg",
@@ -15,12 +15,12 @@
     "static/media/ritp.jpg": "/personalWeb/static/media/ritp.a39b4e4f182a0fb73cd2.jpg",
     "static/media/astr_moon.jpg": "/personalWeb/static/media/astr_moon.4932a690ca8c05d7b802.jpg",
     "index.html": "/personalWeb/index.html",
-    "main.f855e6bc.css.map": "/personalWeb/static/css/main.f855e6bc.css.map",
-    "main.784810a4.js.map": "/personalWeb/static/js/main.784810a4.js.map",
+    "main.75b37e2b.css.map": "/personalWeb/static/css/main.75b37e2b.css.map",
+    "main.979a794c.js.map": "/personalWeb/static/js/main.979a794c.js.map",
     "453.2684e94b.chunk.js.map": "/personalWeb/static/js/453.2684e94b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.784810a4.js"
+    "static/css/main.75b37e2b.css",
+    "static/js/main.979a794c.js"
   ]
 }

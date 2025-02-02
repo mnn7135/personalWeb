@@ -69,7 +69,7 @@ export default class IWeatherPredictionService {
         const humidityFactor = this.computeHumidityFactor(dayDiff)*100;
 
         // predict new temp
-        const predictedTemperature = this.predictTemperature(day);
+        const predictedTemperature = this.predictTemperature(day) + temperatureFactor*0;
 
         if (windFactor > 5) {
             weatherDesc = this.config.WEATHER_WIND;

@@ -1,4 +1,4 @@
-name: "Deploy Website"
+name: "Deploy Personal Website"
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
               run: npm install @fortawesome/fontawesome-svg-core @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
 
             - name: Build
-              run: npm run build
+              run: CI=false npm run build
 
             - name: Deploy
               run: |
@@ -42,4 +42,3 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                 GITHUB_REPOSITORY: ${{ 'personalWeb' }}
-                CI: false

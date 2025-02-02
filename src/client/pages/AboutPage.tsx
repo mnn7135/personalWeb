@@ -14,6 +14,7 @@ function AboutPage() {
                         {config.ABOUT_TITLE}
                     </div>
                     <div style={paddingBarStyle}></div>
+                    <InfoCard description={config.PROJECT_1_DESCRIPTION}/>
                 </div>
             </div>
             <div style={{ display: 'flex', padding: '10px', ...appStyling }}>

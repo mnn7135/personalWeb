@@ -22,7 +22,7 @@ export const infoCardInnerStyle : React.CSSProperties = {
 }
 
 export const paddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'white', 
+    backgroundColor: 'black', 
     height: '3px', 
     paddingLeft: '5px', 
     paddingRight: '5px'

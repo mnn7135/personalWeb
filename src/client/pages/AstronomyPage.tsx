@@ -29,7 +29,7 @@ function AstronomyPage() {
     return (
         <div style={{ display: 'flex', ...appStyling }}>
             <div style={{ flex: '12' }}>
-                <div style={{ fontSize: '60px', textAlign: 'center', color: 'white' }}>
+                <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}>
                     {config.ASTRONOMY_TITLE}
                 </div>
                 <div style={paddingBarStyle}></div>

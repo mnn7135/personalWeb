@@ -5,7 +5,7 @@ export const appStyling : React.CSSProperties = {
 }
 
 export const paddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'gray', 
+    backgroundColor: 'black', 
     height: '3px', 
     paddingLeft: '5px', 
     paddingRight: '5px'
@@ -28,7 +28,7 @@ export const imageContainerStyleMinimal : React.CSSProperties = {
 
 export const pageStyling : React.CSSProperties = {
     margin: '10px',
-    fontFamily: 'Verdana',
+    fontFamily: 'Arial',
     fontWeight: 'bold',
     fontSize: '16px',
     color: 'black',
@@ -37,13 +37,14 @@ export const pageStyling : React.CSSProperties = {
   
 export const webAppStyling : React.CSSProperties = {
     backgroundColor: PAGE_COLOR,
+    fontFamily: 'Arial',
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '-20px'
   }
   
 export const smallPaddingBarStyle : React.CSSProperties = {
-    backgroundColor: 'gray', 
+    backgroundColor: 'black', 
     height: '2px',
     marginBottom: '19px'
   }

@@ -16,7 +16,7 @@ function WeatherCard(props: {
 
     return (
         <div style={{ fontSize: '32px', ...infoCardOuterStyle }}>
-            {props?.superTitle ? <div><div style={{ fontSize: '80px', textAlign: 'center', paddingBottom: '20px', ...infoCardInnerStyle }}>
+            {props?.superTitle ? <div><div style={{ fontSize: '60px', textAlign: 'center', paddingBottom: '20px', ...infoCardInnerStyle }}>
                 {props?.superTitle}
             </div><div style={{ paddingBottom: '20px' }}></div><div style={{...paddingBarStyle}}></div><div style={{ paddingBottom: '20px' }}></div></div> : <></>}
             <div style={{ textAlign: 'center', ...infoCardInnerStyle }}>

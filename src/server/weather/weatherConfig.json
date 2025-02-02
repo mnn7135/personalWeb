@@ -38,7 +38,7 @@
     "SEVERE_THUNDERSTORM_WARNING": "Severe Thunderstorm Warning",
     "FLASH_FLOOD_WARNING": "Flash Flood Warning",
     "BLIZZARD_WARNING": "Blizzard Warning",
-    "NO_ALERTS": "No Active Local Watches/Warnings/Advisories",
+    "NO_ALERTS": "",
 
     "INCHES_MERCURY_TO_MBAR_CONVERSION": 33.8639
 }

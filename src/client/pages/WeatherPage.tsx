@@ -9,6 +9,7 @@ import { ISunDataResult } from "../../server/domain/sundataresult.domain";
 import IWeatherPredictionService from "../../server/weather/weatherprediction.service";
 import { IAppConfig, loadAppConfig } from "./appConfig.service";
 import { appStyling, paddingBarStyle } from "./pageStyle";
+import InfoCard from "../components/InfoCard";
 
 const config: IAppConfig = loadAppConfig();
 
@@ -76,6 +77,10 @@ function WeatherPage() {
                     <div style={{ fontSize: '60px', textAlign: 'center', color: 'black' }}> Victor, NY Weather | Phoenix Station </div>
                     <div style={paddingBarStyle}></div>
                     <div style={{ fontSize: '40px', textAlign: 'center', color: 'black', padding: '10px' }}>Right Now</div>
+                    <div style={paddingBarStyle}></div>
+                    {helperService?.getActiveAlerts() != '' ? <div>
+                        <InfoCard title="Weather Alerts" description={helperService?.getActiveAlerts()}></InfoCard>
+                    </div> : <div></div>}
                     <div style={paddingBarStyle}></div>
                     <div style={{ display: 'flex', ...appStyling }}>
                         <div style={{ flex: '2' }}></div>

@@ -120,28 +120,28 @@ export default class IWeatherPredictionService {
 
     private computeWindFactor(dayDiff: number) {
         const windSpeedTrendAvg = (this.windSpeedTrendToday + this.windSpeedTrendLastWeek)/2;
-        const windSpeedDifference = (this.windSpeedAverageToday - this.windSpeedTrendLastWeek);
+        const windSpeedDifference = (this.windSpeedAverageToday - this.windSpeedAverageLastWeek);
         
         return windSpeedDifference*windSpeedTrendAvg*dayDiff;
     }
 
     private computePressureFactor(dayDiff: number) {
         const pressureTrendAvg = (this.pressureTrendToday + this.pressureTrendLastWeek)/2;
-        const pressureDifference = (this.pressureAverageToday - this.pressureTrendLastWeek);
+        const pressureDifference = (this.pressureAverageToday - this.pressureAverageLastWeek);
         
         return pressureDifference*pressureTrendAvg*dayDiff;
     }
 
     private computeTemperatureFactor(dayDiff: number) {
         const temperatureTrendAvg = (this.temperatureTrendToday + this.temperatureTrendLastWeek)/2;
-        const temperatureDifference = (this.temperatureAverageToday - this.temperatureTrendLastWeek);
+        const temperatureDifference = (this.temperatureAverageToday - this.temperatureAverageLastWeek);
         
         return temperatureDifference*temperatureTrendAvg*dayDiff;
     }
 
     private computeHumidityFactor(dayDiff: number) {
         const humidityTrendAvg = (this.humidityTrendToday + this.humidityTrendLastWeek)/2;
-        const humidityDifference = (this.humidityAverageToday - this.humidityTrendLastWeek);
+        const humidityDifference = (this.humidityAverageToday - this.humidityAverageLastWeek);
         
         return humidityDifference*humidityTrendAvg*dayDiff;
     }
